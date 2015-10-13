@@ -27,7 +27,7 @@ module.exports = function(grunt) {
                 dest: '<%= extension_dir %>'
             },
             appFiles: {
-                src: ['public/**','!public/apps/forms/templates/**','!public/apps/forms/javascripts/*.js','!public/apps/forms/stylesheets/*.css'],
+                src: ['public/**'],
                 dest: '<%= extension_dir %>'
             }
         },
@@ -60,7 +60,7 @@ module.exports = function(grunt) {
                 repositoryUrl: grunt.option('repositoryUrl'),
                 artifactId: '<%= pkg.name %>',
                 version: grunt.option('projectVersion'),
-                files: ['<%= pkg.name %>-<%= version %>-service.zip', '<%= pkg.name %>-<%= version %>-extension.zip'],
+                files: ['<%= pkg.name %>-<%= version %>-extension.zip'],
                 filename: '<%= target_dir %>/artifact-list.properties'
             }
         },
@@ -88,7 +88,7 @@ module.exports = function(grunt) {
                         opensocial: false
                     }
                 },
-                src: ['Gruntfile.js', 'public/**/*.js', '!public/**/jquery/*.js']
+                src: ['Gruntfile.js', 'public/**/*.js', '!public/**/thirdparty/**']
             },
 
             html: {
@@ -109,49 +109,9 @@ module.exports = function(grunt) {
                         opensocial: false
                     }
                 },
-                src: ['apps/**/*.html']
+                src: ['public/apps/**/*.html']
             }
 
-        },
-        soycompile: {
-            app: {
-                src: ['public/apps/forms/templates/*.soy'],
-                dest: '<%= temp_dir %>/ps-formbuilder-templates.js',
-                options: {
-                    jarPath: "lib"
-                }
-            }
-        },
-        concat: {
-            js: {
-                src: ['public/apps/forms/javascripts/*.js', '<%= temp_dir %>/ps-formbuilder-templates.js'],
-                dest: '<%= temp_dir %>/ps-formbuilder.js',
-                options: {
-                    separator: ';'
-                }
-            },
-            css: {
-                src: ['public/apps/forms/stylesheets/*.css'],
-                dest: '<%= temp_dir %>/ps-formbuilder.css'
-            }
-        },
-        uglify: {
-            js: {
-                files: {
-                    '<%= extension_dir %>/public/apps/forms/javascripts/ps-formbuilder.min.js': ['<%= temp_dir %>/ps-formbuilder.js']
-                }
-            }
-        },
-        cssmin: {
-            options: {
-                shorthandCompacting: false,
-                roundingPrecision: -1
-            },
-            target: {
-                files: {
-                    '<%= extension_dir %>/public/apps/forms/stylesheets/ps-formbuilder.min.css': ['<%= temp_dir %>/ps-formbuilder.css']
-                }
-            }
         }
     });
 
@@ -167,11 +127,13 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
 
-    // TODO include jshint and fix the warnings
+    // TODO undo this
+    // grunt.registerTask('build', ['prep', 'jshint', 'buildExtension']);
     grunt.registerTask('build', ['prep', 'buildExtension']);
-    grunt.registerTask('prep', ['clean', 'mkdir']);
-    grunt.registerTask('buildExtension', ['copy:extensionFiles', 'copy:appFiles', 'soycompile', 'concat', 'uglify', 'cssmin', 'zip:extension']);
 
-    grunt.registerTask('release', ['build', 'writeArtifactList', 'mavenDeploy:extension', 'mavenDeploy:service']);
+    grunt.registerTask('prep', ['clean', 'mkdir']);
+    grunt.registerTask('buildExtension', ['copy:extensionFiles', 'copy:appFiles', 'zip:extension']);
+
+    grunt.registerTask('release', ['build', 'writeArtifactList', 'mavenDeploy:extension']);
     grunt.registerTask('default', ['build']);
 };
