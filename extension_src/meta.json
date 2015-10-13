@@ -1,0 +1,14 @@
+{
+    "package_version": "1.0",
+    "id": "c0e8eebd-6c3a-473e-8be1-676e5e032b6b",
+    "type": "client-app",
+    "name": "Forms App Add-On",
+    "description": "Apps: [Forms App]",
+    "minimum_version": "0080300000",
+    "icon_16": "extension-16.png",
+    "icon_48": "extension-48.png",
+    "icon_128": "extension-128.png",
+    "released_on": "2013-03-08T19:11:11.234Z",
+    "service_url": "http://localhost:8090",
+    "redirect_url": "%serviceURL%"
+}
