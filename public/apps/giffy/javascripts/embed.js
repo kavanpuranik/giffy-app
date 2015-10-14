@@ -22,7 +22,7 @@ app.controller('search.ctrl', ['$scope', '$rootScope', 'search.service', '$log',
                 return;
             }
 
-            $http.get("http://api.giphy.com/v1/gifs/search?q=" + encodeURIComponent(newValue) + "&limit=12&api_key=dc6zaTOxFJmzC")
+            $http.get("https://api.giphy.com/v1/gifs/search?q=" + encodeURIComponent(newValue) + "&limit=12&api_key=dc6zaTOxFJmzC")
                 .then(function(response){
 
                     console.log("data:" + response.data.data);
@@ -31,14 +31,6 @@ app.controller('search.ctrl', ['$scope', '$rootScope', 'search.service', '$log',
         });
 
         $scope.selectImage = function(selectedImage){
-
-            //var selectedImage;
-            //for (var i = 0; i < $scope.images.length; i++){
-            //    var image = $scope.images[i];
-            //    if (image.id === imageId){
-            //        selectedImage = image;
-            //    }
-            //}
 
             osapi.jive.core.container.closeApp({
                 data:{
