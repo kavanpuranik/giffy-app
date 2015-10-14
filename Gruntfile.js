@@ -34,11 +34,11 @@ module.exports = function(grunt) {
 
         html2js: {
             options: {
-                base: 'public/apps/giffy/templates/'
+                base: 'public/apps/giphy/templates/'
             },
             main: {
-                src: ['public/apps/giffy/templates/*.tpl.html'],
-                dest: '<%= extension_dir %>public/apps/giffy/templates/combined.js'
+                src: ['public/apps/giphy/templates/*.tpl.html'],
+                dest: '<%= extension_dir %>public/apps/giphy/templates/combined.js'
             }
         },
 

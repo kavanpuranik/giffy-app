@@ -21,8 +21,8 @@
  -->
 
 <Module specificationVersion="1">
-  <ModulePrefs title="Giffy"
-               description="App used to post Giffy images"
+  <ModulePrefs title="giphy"
+               description="App used to post giphy images"
                author="Kavan Puranik"
                author_affiliation="Jive Software"
                author_email="kavan.puranik@jivesoftware.com">

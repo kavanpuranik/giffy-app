@@ -75,7 +75,7 @@ gadgets.util.registerOnLoadHandler(function() {
 
     gadgets.window.adjustHeight(280);
     gadgets.window.adjustWidth(800);
-    gadgets.window.setTitle("Giffy");
+    gadgets.window.setTitle("giphy");
 });
 
 

@@ -2,7 +2,7 @@
     "package_version": "1.0",
     "id": "c0e8eebd-6c3a-473e-8be1-676e5e032b6d",
     "type": "client-app",
-    "name": "Giffy App Add-On",
+    "name": "giphy App Add-On",
     "description": "Apps: [Giff App]",
     "minimum_version": "0080300000",
     "icon_16": "extension-16.png",
