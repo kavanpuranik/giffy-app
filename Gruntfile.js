@@ -32,6 +32,16 @@ module.exports = function(grunt) {
             }
         },
 
+        html2js: {
+            options: {
+                base: 'public/apps/giffy/templates/'
+            },
+            main: {
+                src: ['public/apps/giffy/templates/*.tpl.html'],
+                dest: '<%= extension_dir %>public/apps/giffy/templates/combined.js'
+            }
+        },
+
         zip: {
             extension: {
                 cwd: '<%= extension_dir %>',
@@ -126,13 +136,14 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-html2js');
 
     // TODO undo this
-    // grunt.registerTask('build', ['prep', 'jshint', 'buildExtension']);
+    //grunt.registerTask('build', ['prep', 'jshint', 'buildExtension']);
     grunt.registerTask('build', ['prep', 'buildExtension']);
 
     grunt.registerTask('prep', ['clean', 'mkdir']);
-    grunt.registerTask('buildExtension', ['copy:extensionFiles', 'copy:appFiles', 'zip:extension']);
+    grunt.registerTask('buildExtension', ['copy:extensionFiles', 'copy:appFiles', 'html2js', 'zip:extension']);
 
     grunt.registerTask('release', ['build', 'writeArtifactList', 'mavenDeploy:extension']);
     grunt.registerTask('default', ['build']);

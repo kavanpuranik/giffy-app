@@ -1,4 +1,5 @@
 gadgets.util.registerOnLoadHandler(function() {
+
     //this code will set the background image on the embedded experience. Feels a bit too busy to me
     // var bg = $("#protoImage");
     // $("body").css("background-image","url('" + bg.attr('src') + "')");
@@ -15,7 +16,7 @@ gadgets.util.registerOnLoadHandler(function() {
         }
     };
     gadgets.actions.updateAction({
-        id:"com.jivesoftware.rte.wikipedia",
+        id:"com.jivesoftware.rte.giffy",
         callback:loadContent
     });
     window.focus();
@@ -58,6 +59,9 @@ $(function() {
                     self.data('active', true);
 
                     var callback = function(response) {
+
+                        console.log("data:" + response.data);
+
                         var data = JSON.parse(response.data);
                         //set this to true when your callback executes
                         self.data('active', true);
@@ -66,7 +70,7 @@ $(function() {
                         var res = data[1];
                         i = res.length;
                         while (i--) {
-                            arr[i] = res[i];
+                            arr[i] = res[i].url;
                         }
 
                         //set your results into the typehead's source
@@ -80,7 +84,7 @@ $(function() {
 
                     };
 
-                    var url = "http://en.wikipedia.org/w/api.php?action=opensearch&format=json&search=" + encodeURIComponent($(this).val()) + "&limit=12";
+                    var url = "http://api.giphy.com/v1/gifs/search?q=" + encodeURIComponent($(this).val()) + "&limit=12&api_key=dc6zaTOxFJmzC";
                     gadgets.io.makeRequest(url, callback);
 
                 }

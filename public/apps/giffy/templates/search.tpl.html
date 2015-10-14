@@ -1,0 +1,12 @@
+<img src='../images/blank.gif' id='dummyImg' style='display:none' />
+<div>
+    <div class="wrap">
+        <input type="text" ng-model="query" placeholder="Search for something" data-provide="typeahead">
+    </div>
+    <div id="results">
+        <div ng-repeat="image in images" style="display: inline-block;vertical-align: top;">
+            <img src="{{image.images.fixed_height_small.url}}"
+                 ng-click="selectImage(image)" >
+        </div>
+    </div>
+</div>
