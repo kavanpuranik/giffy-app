@@ -1,4 +1,4 @@
-var app = angular.module('embed', ['ngRoute', 'templates-main'])
+var app = angular.module('embed', ['ngRoute', 'templates-main']);
 
 app.config(['$routeProvider', function ($routeProvider) {
     $routeProvider.when('/search',
@@ -11,33 +11,29 @@ app.config(['$routeProvider', function ($routeProvider) {
 
 }]);
 
-app.controller('search.ctrl', ['$scope', '$rootScope', 'search.service', '$log', '$http',
-    function ($scope, $rootScope, searchService, $log, $http) {
+app.controller('search.ctrl', ['$scope', '$rootScope', '$log', '$http',
+    function ($scope, $rootScope, $log, $http) {
 
         $scope.$watch('query', function(newValue, oldValue, $scope){
-
-            console.log("in search:" + newValue);
-
             if (!newValue){
                 return;
             }
 
-            $http.get("https://api.giphy.com/v1/gifs/search?q=" + encodeURIComponent(newValue) + "&limit=12&api_key=dc6zaTOxFJmzC")
+            $http.get("https://api.giphy.com/v1/gifs/search?q=" + newValue.replace(/ /g, '+') + "&limit=15&api_key=dc6zaTOxFJmzC")
                 .then(function(response){
-
-                    console.log("data:" + response.data.data);
-                    $scope.images = response.data.data;
+                    if (response && response.data){
+                        $scope.images = response.data.data;
+                    }
                 });
         });
 
         $scope.selectImage = function(selectedImage){
-
             osapi.jive.core.container.closeApp({
                 data:{
                     display: {
                         type: "image",
-                        previewImage: selectedImage.images.fixed_height.url,
-                        label: selectedImage.images.fixed_height.url
+                        previewImage: selectedImage.images.fixed_height_downsampled.url,
+                        label: selectedImage.url
                     },
                     target: {
                         type: "embed",
@@ -49,23 +45,6 @@ app.controller('search.ctrl', ['$scope', '$rootScope', 'search.service', '$log',
     }
 ]);
 
-app.factory('search.service',
-    ['$q', '$log', function ($q, $log) {
-
-        var config = {};
-
-        var services = {};
-
-        services.getCanApprove = function() {
-            var deferred = $q.defer();
-
-            return deferred.promise;
-        };
-
-        return services;
-}]);
-
-
 gadgets.util.registerOnLoadHandler(function() {
     angular.element(document).ready(function () {
         angular.bootstrap(document, ['embed'], [{
@@ -73,9 +52,9 @@ gadgets.util.registerOnLoadHandler(function() {
         }]);
     });
 
-    gadgets.window.adjustHeight(280);
+    gadgets.window.adjustHeight(400);
     gadgets.window.adjustWidth(800);
-    gadgets.window.setTitle("giphy");
+    gadgets.window.setTitle("Giphy");
 });
 
 

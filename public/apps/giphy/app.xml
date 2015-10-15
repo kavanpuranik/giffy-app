@@ -53,19 +53,7 @@
     <Link rel="MediumIcon" href="images/favicon.png" />
     <Link rel="LargeIcon"  href="images/favicon.png" />
 
-    <!-- Screenshots: 600w x 400h, should include at least 1 and up to 5 -->
-    <!--<Link rel="Screenshot1" href="images/screenshot01.png" />-->
-
-    <!-- Preloaded Content: http://wiki.opensocial.org/index.php?title=Remote_Data_Requests_%28v0.9%29#Preloading_data -->
-    <!--
-    <Preload href="http://www.example.com" />
-    -->
-
   </ModulePrefs>
-
-  <!-- User Preferences: http://code.google.com/apis/gadgets/docs/reference.html#Userprefs_Ref -->
-
-
 
   <Content type="html" view="canvas,home" href="home.html" preferred_height="640" preferred_width="480" />
   <Content type="html" view="embedded" href="embed.html" preferred_height="640" preferred_width="480" />

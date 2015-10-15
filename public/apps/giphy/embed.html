@@ -2,23 +2,21 @@
 <html lang="">
 <head>
     <meta charset="utf-8">
-    <title>giphy</title>
-    <link rel="stylesheet" href="stylesheets/bootstrap.min.css" type="text/css" media="screen" />
-    <link rel="stylesheet" href="stylesheets/main.css" type="text/css" media="screen" />
+    <title>Giphy</title>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css" type="text/css" media="screen" />
 </head>
 <body>
-<img src='images/blank.gif' id='dummyImg' style='display:none' />
-<div id="appview" >
-    <div data-ng-view >Loading...</div>
-</div>
+    <div class="jumbotron">
+        <div data-ng-view>Loading...</div>
+    </div>
 
-<script type="text/javascript" src="javascripts/angular.js"></script>
-<script type="text/javascript" src="javascripts/angular-route.js"></script>
-<!--<script type="text/javascript" charset="utf-8" src="javascripts/shared.js"></script>-->
-<script type="text/javascript" charset="utf-8" src="templates/combined.js"></script>
-<script type="text/javascript" charset="utf-8" src="javascripts/embed.js"></script>
+    <script type="text/javascript" src="javascripts/angular.js"></script>
+    <script type="text/javascript" src="javascripts/ui-bootstrap-tpls-0.14.2.min.js"></script>
+    <script type="text/javascript" src="javascripts/angular-route.js"></script>
 
-<!-- This image is needed to swap in as a background image via JavaScript (see search.js)-->
-<!--img id="protoImage" src="images/wikipedia-logo-20-search.png" style="display: none;"/-->
+    <script type="text/javascript" charset="utf-8" src="templates/combined.js"></script>
+    <script type="text/javascript" charset="utf-8" src="javascripts/embed.js"></script>
+
 </body>
 </html>

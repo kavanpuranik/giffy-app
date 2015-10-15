@@ -1,0 +1,9 @@
+
+.jumbotron {
+    height: 800px;
+}
+
+.gif-item {
+    display: inline-block;
+    vertical-align: top;
+}
