@@ -19,7 +19,7 @@ app.controller('search.ctrl', ['$scope', '$rootScope', '$log', '$http',
                 return;
             }
 
-            $http.get("https://api.giphy.com/v1/gifs/search?q=" + newValue.replace(/ /g, '+') + "&limit=15&api_key=dc6zaTOxFJmzC")
+            $http.get("https://api.giphy.com/v1/gifs/search?q=" + newValue.replace(/ /g, '+') + "&limit=22&api_key=dc6zaTOxFJmzC")
                 .then(function(response){
                     if (response && response.data){
                         $scope.images = response.data.data;
@@ -52,7 +52,7 @@ gadgets.util.registerOnLoadHandler(function() {
         }]);
     });
 
-    gadgets.window.adjustHeight(400);
+    gadgets.window.adjustHeight(800);
     gadgets.window.adjustWidth(800);
     gadgets.window.setTitle("Giphy");
 });
