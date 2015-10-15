@@ -5,7 +5,7 @@
     "osapps": [
         {
             "id": "c0e8eebd-6c3a-473e-8be1-676e5e032b6c",
-            "name": "giphy",
+            "name": "Giphy",
             "appPath": "giphy",
             "url": "/public/apps/giphy/app.xml"
         }

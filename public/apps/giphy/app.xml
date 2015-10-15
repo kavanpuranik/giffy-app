@@ -22,7 +22,7 @@
 
 <Module specificationVersion="1">
   <ModulePrefs title="giphy"
-               description="App used to post giphy images"
+               description="App to embed gifs from Giphy.com"
                author="Kavan Puranik"
                author_affiliation="Jive Software"
                author_email="kavan.puranik@jivesoftware.com">
